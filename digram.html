@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solution Architecture Diagram</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .box {
+            padding: 20px;
+            border: 1px solid #000;
+            text-align: center;
+            width: 200px;
+            margin: 10px;
+        }
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 20px solid #000;
+            margin: 10px;
+        }
+        .arrow-right {
+            display: inline-block;
+            width: 0; 
+            height: 0; 
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent; 
+            border-left: 20px solid #000;
+            margin: 10px;
+        }
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="box">Live Stream Input</div>
+            <div class="arrow-right"></div>
+            <div class="box">Streaming Ingest Server (NGINX RTMP, or Kinesis Video Streming AWS )</div>
+            <div class="arrow-right"></div>
+            <div class="box">Real-time Processing (Kafka + Flink)</div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="arrow-down"></div>
+                <div class="box">Storage (Cloud Storage)</div>
+            </div>
+            <div class="column">
+                <div class="arrow-down"></div>
+                <div class="box">Audio Transcription (Whisper from OpenAI)</div>
+                <div class="arrow-down"></div>
+                <div class="box">Real-time Translation (AWS Translate)</div>
+            </div>
+            <div class="column">
+                <div class="arrow-right"></div>
+                <div class="box">Emotion Recognition (BERT-based pre-trained model, or T-5)</div>
+            </div>
+            <div class="column">
+                <div class="arrow-down"></div>
+                <div class="box">Logo Recognition (AWS Rekognition)</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
